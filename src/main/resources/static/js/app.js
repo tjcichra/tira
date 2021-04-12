@@ -1,3 +1,5 @@
+const root = '/api';
+
 class App extends React.Component {
 
     constructor(props) {

@@ -1,5 +1,8 @@
 package com.tjcichra.tira.database;
 
+import java.util.ArrayList;
+
+import com.tjcichra.tira.database.repositories.TicketRepository;
 import com.tjcichra.tira.database.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class DatabaseLoader implements CommandLineRunner {
 
     private final UserRepository userRepository;
+    private final TicketRepository ticketRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -18,5 +22,13 @@ public class DatabaseLoader implements CommandLineRunner {
         u.setPassword("test");
         u.setName("Test User");
         this.userRepository.save(u);
+
+        Ticket tick = new Ticket();
+        tick.setSubject("Finish Tira");
+        tick.setDescription("Work on Tira until it is finished.");
+        tick.setReporter(u);
+        tick.setAssignees(new ArrayList<User>());
+        tick.setComments(new ArrayList<Comment>());
+        this.ticketRepository.save(tick);
     }
 }

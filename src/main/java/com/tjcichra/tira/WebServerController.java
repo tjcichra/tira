@@ -10,4 +10,19 @@ public class WebServerController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping(value = "/ticketlist")
+    public String ticketlist() {
+        return "ticketlist";
+    }
+
+    @RequestMapping(value = "/createticket")
+    public String createticket() {
+        return "createticket";
+    }
+
+    @RequestMapping(value = "/ticket")
+    public String ticket() {
+        return "ticket";
+    }
 }
