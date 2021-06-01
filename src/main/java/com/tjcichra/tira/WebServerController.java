@@ -21,7 +21,7 @@ public class WebServerController {
         return "createticket";
     }
 
-    @RequestMapping(value = "/ticket")
+    @RequestMapping(value = "/ticket/{id}")
     public String ticket() {
         return "ticket";
     }

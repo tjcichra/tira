@@ -45,7 +45,8 @@ class Ticket extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: ""
+			username: "",
+			redirect: ""
 		};
 	}
 
@@ -53,13 +54,18 @@ class Ticket extends React.Component{
 		fetch(this.props.ticket._links.reporter.href).then(response => response.json()).then(data => this.setState({
 			username: data.username
 		}));
+
+		var urlParts = this.props.ticket._links.self.href.split("/");
+		this.setState({
+			redirect: "/ticket/" + urlParts[urlParts.length - 1]
+		});
 	}
 	
 	render() {
 		return (
 			<tr>
 				<td>{this.props.ticket.subject}</td>
-				<td>{this.props.ticket.description}</td>
+				<td><a href={this.state.redirect}>{this.props.ticket.description}</a></td>
 				<td>{this.state.username}</td>
 			</tr>
 		)

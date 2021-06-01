@@ -1,3 +1,7 @@
+//import React, { Component } from 'react';
+//import { CKEditor } from '@ckeditor/ckeditor5-react';
+//import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 class CreateTicketForm extends React.Component {
 
 	constructor(props) {
@@ -77,7 +81,7 @@ class CreateTicketForm extends React.Component {
 				<br/>
 				<label>
 					Description:
-					<input type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/>
+					<textarea name="description" value={this.state.description} onChange={this.handleInputChange}/>
 				</label>                
 				<br/>
 				<select value={this.state.reporter} name="reporter" onChange={this.handleInputChange}>
@@ -86,6 +90,12 @@ class CreateTicketForm extends React.Component {
 				<br/>
 				<select value={this.state.assignees} name="assignees" multiple={true} onChange={this.handleAssigneesChange}>
 					{users}
+				</select>
+				<br/>
+				<select value={this.state.status} name="status" onChange={this.handleInputChange}>
+					<option value="inprogress">In Progress</option>
+					<option value="testing">Testing</option>
+					<option value="done">Done</option>
 				</select>
 				<br/>
 				<input type="submit"/>

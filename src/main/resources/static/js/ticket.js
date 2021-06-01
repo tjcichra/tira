@@ -1,72 +1,39 @@
-class Ticket extends React.Component {
+class TicketDisplay extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			tickets: []
+			ticket: null
 		};
 	}
 
 	componentDidMount() {
-		fetch('/api/tickets').then(response => response.json()).then(data => this.setState({
-			tickets: data._embedded.tickets
+		var urlParts = window.location.href.split("/");
+		var ticketId = urlParts[urlParts.length - 1];
+
+		fetch('/api/tickets/' + ticketId).then(response => response.json()).then(data => this.setState({
+			ticket: data
 		}));
 	}
 
 	render() {
-		return (
-			<TicketList tickets={this.state.tickets}/>
-		)
-	}
-}
-
-class TicketList extends React.Component {
-	render() {
-		const tickets = this.props.tickets.map(ticket =>
-			<Ticket key={ticket._links.self.href} ticket={ticket}/>
-		);
-		return (
-			<table>
-				<tbody>
-					<tr>
-						<th>Subject</th>
-						<th>Description</th>
-						<th>Reporter</th>
-					</tr>
-					{tickets}
-				</tbody>
-			</table>
-		)
-	}
-}
-
-class Ticket extends React.Component{
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			username = ""
-		};
-	}
-
-	componentDidMount() {
-		fetch(this.props.ticket._links.reporter.href).then(response => response.json()).then(data => this.setState({
-			username: data._embedded.tickets
-		}));
-	}
-	
-	render() {
-		return (
-			<tr>
-				<td>{this.props.ticket.subject}</td>
-				<td>{this.props.ticket.description}</td>
-				<td>{this.state.username}</td>
-			</tr>
-		)
+		if(this.state.ticket == null) {
+			return (
+				<div></div>
+			)
+		} else {
+			return (
+				<div>
+					<Navbar/>
+					<p>{this.state.ticket.subject}</p>
+					<p>{this.state.ticket.description}</p>
+				</div>
+			)
+		}
 	}
 }
 
 ReactDOM.render(
-	<TicketListApp />,
+	<TicketDisplay />,
 	document.getElementById('react')
 )

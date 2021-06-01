@@ -19,6 +19,10 @@ public class Ticket {
 
     private String description;
 
+    private String status;
+
+    private int priority;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User reporter;
