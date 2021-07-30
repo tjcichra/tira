@@ -1,7 +1,8 @@
-package com.tjcichra.tira.database;
+package com.tjcichra.tira.database.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;

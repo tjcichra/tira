@@ -1,4 +1,4 @@
-package com.tjcichra.tira.database;
+package com.tjcichra.tira.database.models;
 
 import lombok.Getter;
 import lombok.Setter;
