@@ -37,7 +37,11 @@
 			<label>
 				Description:
 				<textarea name="description"></textarea>
-			</label>                
+			</label>
+			<br>
+			<select name="category">
+				<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+			</select>
 			<br>
 			<select name="reporter">
 				<option th:each="user: ${users}" th:value="${user.id}" th:text="${user.name}"></option>

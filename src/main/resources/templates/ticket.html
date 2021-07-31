@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head lang="en">
-	<title>Tira Ticket</title>
+	<title>Tira</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,5 +26,16 @@
 			</ul>
 		</div>
 	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<p th:text="${ticket.subject}" />
+				<p th:text="${ticket.description}" />
+				<p th:text="${ticket.status}" />
+				<p th:text="${ticket.priority}" />
+			</div>
+		</div>
+	</div>
 </body>
 </html>

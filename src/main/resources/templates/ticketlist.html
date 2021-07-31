@@ -40,7 +40,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="ticket: ${tickets}">
+						<tr th:each="ticket: ${tickets}" th:attr="onclick=|window.location='/ticket/${ticket.id}';|">
 							<td th:text="${ticket.subject}" />
 							<td th:text="${ticket.description}" />
 							<td th:text="${ticket.status}" />

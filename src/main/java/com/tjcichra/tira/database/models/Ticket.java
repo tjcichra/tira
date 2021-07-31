@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,6 +18,10 @@ public class Ticket {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     private String subject;
 
     private String description;
@@ -23,6 +29,8 @@ public class Ticket {
     private String status;
 
     private int priority;
+
+    private Date created;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
