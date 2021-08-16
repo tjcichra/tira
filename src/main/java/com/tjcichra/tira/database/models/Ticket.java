@@ -1,13 +1,19 @@
 package com.tjcichra.tira.database.models;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
-import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -30,7 +36,8 @@ public class Ticket {
 
     private int priority;
 
-    private Date created;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datetimeCreated;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

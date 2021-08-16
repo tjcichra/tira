@@ -11,18 +11,14 @@ import com.tjcichra.tira.database.models.User;
 
 public class MyUserDetails implements UserDetails {
 
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    private String username;
+    private String password;
+    private Long userId;
 
     public MyUserDetails(User user) {
-        this.user = user;
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.userId = user.getId();
     }
 
     @Override
@@ -32,12 +28,16 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return this.username;
+    }
+
+    public Long getUserId() {
+        return this.userId;
     }
 
     @Override

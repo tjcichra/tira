@@ -20,15 +20,15 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // User u = new User();
-        // u.setUsername("user1");
+        // u.setUsername("tim");
         // u.setPassword("test");
-        // u.setName("Test User 1");
+        // u.setName("Tim");
         // this.userRepository.save(u);
 
         // User u2 = new User();
-        // u2.setUsername("user2");
+        // u2.setUsername("justin");
         // u2.setPassword("test");
-        // u2.setName("Test User 2");
+        // u2.setName("Justin");
         // this.userRepository.save(u2);
 
         // Category c = new Category();

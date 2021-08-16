@@ -28,31 +28,17 @@
 	</nav>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<h2 th:text="${ticket.subject}" />
-				<div>
-					<strong>Status</strong>
-					<p th:text="${ticket.status}"></p>
-				</div>
-				<div>
-					<strong>Priority</strong>
-					<p th:text="${ticket.priority}"></p>
-				</div>
-				<div>
-					<strong>Assignees</strong>
-					<p th:each="assignee: ${ticket.assignees}" th:text="${assignee.name}"/>
-				</div>
-				<strong>Description</strong>
-				<div class="panel panel-default">
-					<div class="panel-body" th:text="${ticket.description}"/>
-				</div>
-				<div>
-					<strong>Reported By</strong>
-					<p th:text="${ticket.reporter.name}" />
-				</div>
+		<form action="/createnewcategory" method="POST">
+			<div class="form-group">
+				<label for="name">Name</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="Name">
 			</div>
-		</div>
+			<div class="form-group">
+				<label for="description">Description</label>
+				<textarea class="form-control" id="description" name="description" rows="2" placeholder="Description"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Create Category</button>
+		</form>
 	</div>
 </body>
 </html>

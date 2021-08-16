@@ -20,9 +20,19 @@
 				<a class="navbar-brand" href="/">Tira</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="/ticketlist">Tickets</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tickets<span class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li th:each="category: ${categories}"><a th:href="@{/ticketlist(category=${category.id})}" th:text="${category.name}"/></li>
+						<li><a href="/ticketlist">All Categories</a></li>
+					</ul>
+				</li>
 				<li><a href="/createticket">Create Ticket</a></li>
-				<li><a href="/logout">Log Out</a></li>
+				<li><a href="/createcategory">Create Category</a></li>				
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a><span class="glyphicon glyphicon-user"></span> <span th:text="${user.name}"/></a></li>
+				<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 			</ul>
 		</div>
 	</nav>
