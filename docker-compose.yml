@@ -1,0 +1,15 @@
+version: "3"
+services:
+  tiradb:
+    image: postgres
+    environment: 
+      POSTGRES_DB: tira
+      POSTGRES_PASSWORD: test
+    ports:
+      - 5432:5432
+  tira:
+    image: tjcichra/tira:0.0.4
+    depends_on:
+      - tiradb
+    ports:
+      - 8080:8080
